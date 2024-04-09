@@ -23,6 +23,15 @@ namespace MangaStoreAPI.Controllers
             return Ok(authors);
         }
 
+        [HttpGet]
+        [Route("GetFirstTenAuthors")]
+        public ActionResult<List<Authors>> GetFirstTenAuthors()
+        {
+            List<Authors> authors = _authorsService.GetAll();
+            authors.Reverse();
+            return Ok(authors.Take(10).ToList());
+        }
+
         [HttpGet("{id:length(24)}")]
         public ActionResult<Authors> GetAuthorById(string id)
         {

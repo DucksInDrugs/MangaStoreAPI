@@ -23,6 +23,31 @@ namespace MangaStoreAPI.Controllers
             return Ok(manga);
         }
 
+        [HttpGet]
+        [Route("GetTopManga")]
+        public ActionResult<List<Manga>> GetTopManga()
+        {
+            List<Manga> manga = _mangaService.GetAll().OrderByDescending(anime => anime.Rating).ToList();
+            return Ok(manga);
+        }
+
+        [HttpGet]
+        [Route("GetTopFirstManga")]
+        public ActionResult<List<Manga>> GetTopFirstManga()
+        {
+            List<Manga> manga = _mangaService.GetAll().OrderByDescending(anime => anime.Rating).Take(10).ToList();
+            return Ok(manga);
+        }
+
+        [HttpGet]
+        [Route("GetFirstTenManga")]
+        public ActionResult<List<Manga>> GetFirstTenManga()
+        {
+            List<Manga> manga = _mangaService.GetAll();
+            manga.Reverse();
+            return Ok(manga.Take(10).ToList());
+        }
+
         [HttpGet("{id:length(24)}")]
         public ActionResult<Manga> GetMangaById(string id)
         {

@@ -8,5 +8,7 @@ namespace MangaStoreAPI.Models
     {
         public string Name { get; set; }
         public int Age { get; set; }
+        public string? PhotoURL { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -7,5 +7,6 @@ namespace MangaStoreAPI.Models
     public class Genres : Document
     {
         public string Name { get; set; }
+        public string PhotoURL { get; set; }
     }
 }
